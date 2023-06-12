@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Index</title>
+    <style type="text/css">
+      canvas {
+        image-rendering: optimizeSpeed;
+        /* STOP SMOOTHING, GIVE ME SPEED  */
+        image-rendering: -moz-crisp-edges;
+        /* Firefox                        */
+        image-rendering: -o-crisp-edges;
+        /* Opera                          */
+        image-rendering: -webkit-optimize-contrast;
+        /* Chrome (and eventually Safari) */
+        image-rendering: pixelated;
+        /* Chrome */
+        image-rendering: optimize-contrast;
+        /* CSS3 Proposed                  */
+        -ms-interpolation-mode: nearest-neighbor;
+        /* IE8+                           */
+      }
+
+      #mini {
+        transform: scale(5);
+        transform-origin: 0% 100%;
+        opacity: 0.8;
+        background-color: #fff;
+        position: absolute;
+        transition: 0.1s opacity, 0.1s width;
+
+        pointer-events: none;
+      }
+
+      #bdiv {
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      .fullwidth {
+        width: 100%;
+      }
+      .old {
+        display: none;
+      }
+    </style>
+  </head>
+
+  <body style="background-color: gray">
+    <script>
+      window.exports = {};
+    </script>
+    <canvas
+      id="main"
+      style="position: fixed; top: 0;height:100%; background-color:white;margin-left:auto;"
+      class="fullwidth"
+      width="9"
+      height="9"
+      >Your browser does not support the canvas element</canvas
+    >
+    <canvas
+      id="mini"
+      style="position: absolute; bottom: 0; left: 0; border: 1px solid #000;"
+      width="9"
+      height="9"
+      >Your browser does not support the canvas element</canvas
+    >
+    <div id="bdiv">
+      <button id="insert" hotkey="KeyQ">Insert Frame</button>
+      <button id="copy" hotkey="KeyE">Copy Frame</button>
+      <button id="deletf" hotkey="Delete">Delete Frame</button>
+      <button id="left" hotkey="ArrowLeft">&lt;</button>
+      <span id="current"></span>
+      <button id="right" hotkey="ArrowRight">&gt;</button>
+      <button id="drawerase" hotkey="KeyW">Draw (click to toggle)</button>
+      <button id="export" class="old">download v4.json</button>
+      <button id="exportText" class="old">copy v3.cpp</button>
+      <button id="exportTextDnl" class="old">download v3.cpp</button>
+      <button id="exportv5" hotkey="KeyC">copy v5 full</button>
+      <button id="resize" hotkey="">Resize</button>
+      <button id="dragmode" hotkey="KeyN">[X] New Frame on Drag</button>
+      <span>pen trail</span>
+      <input
+        type="number"
+        placeholder="NFOD Tail"
+        value="1"
+        min="1"
+        max="100"
+        id="nfodtail"
+      />
+      <button id="aspect" hotkey="">1:1 Mode</button>
+      <button id="play" hotkey="Enter">Play</button>
+      <span>play speed</span>
+      <input
+        type="number"
+        placeholder="Play Speed"
+        value="100"
+        id="playSpeed"
+      />
+      <span>pen size</span>
+      <input
+        type="number"
+        placeholder="Pen Width"
+        value="1"
+        min="1"
+        max="100"
+        id="penwidth"
+      />
+    </div>
+    <script type="text/javascript" src="arduinofile.cpp.js"></script>
+    <script type="text/javascript" src="arduinoexporter.js"></script>
+    <script type="text/javascript" src="v5file.js"></script>
+    <script type="text/javascript" src="v5export.js"></script>
+    <script type="text/javascript" src="index.js"></script>
+  </body>
+</html>
